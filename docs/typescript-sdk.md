@@ -5,7 +5,7 @@ sidebar:
   order: 6
 ---
 
-Use a Node.js project with `"type": "module"` in `package.json`. Install `@tripwire-sh/sdk` in that project.
+Use Node.js 24 and set `"type": "module"` in `package.json`. Install `@tripwire-sh/sdk` in that project.
 
 ```sh
 npm install @tripwire-sh/sdk
