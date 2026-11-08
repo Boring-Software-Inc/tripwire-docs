@@ -4,13 +4,13 @@ Use this guide when a developer shares its URL with an agent in a repository che
 
 ## Identify the repository
 
-Use the Git remote to identify the GitHub owner and repository. Confirm the intended repository with the developer if the checkout has multiple plausible remotes. Match the exact owner and repository against Tripwire before changing anything. Pass the confirmed Tripwire org to each repo command if the account can access multiple orgs.
+Use the Git remote to identify the GitHub owner and repository. Confirm the intended repository with the developer if the checkout has multiple plausible remotes. Match the exact owner and repository against Tripwire before changing anything. Pass the confirmed Tripwire org to each repo command. Use the GitHub repository URL or the exact Tripwire repository URL returned by the tool.
 
 ## Connect to Tripwire
 
-Use the agent’s existing Tripwire MCP connection if available. Call `whoami` to check the signed-in account and available organizations. If the client needs authorization, give the developer its browser link and wait for approval. After approval, call `whoami` again before moving to repository setup. If the request expires, start a new authorization and discard the old link.
+Use an existing Tripwire MCP connection if the current agent session can call it. Call `whoami` to check the account and available organizations. If the client can authorize and reconnect within this session, pass its browser link to the developer and wait. Call `whoami` again after approval.
 
-If the client does not have Tripwire configured, the installer is `npx @tripwire-sh/cli install`. Use the sign-in instructions it prints for the client. If the agent can run shell commands but cannot use MCP, use the CLI for the rest of setup. Run `npx @tripwire-sh/cli login --no-browser`, give the developer the printed link, and wait for sign-in. Use `npx @tripwire-sh/cli whoami` to verify the CLI session. The MCP client and the CLI each manage their own credentials.
+If MCP is unavailable in this session, use the CLI. Run `npx @tripwire-sh/cli login --no-browser` and keep the process running. Give the developer the verification link and code from the output. Wait for the command to finish after browser approval, then run `npx @tripwire-sh/cli whoami` and continue in the same session. If the request expires or the developer denies it, stop and ask whether to try again. Use the account and organization only after `whoami` confirms approved access and agent access for that organization. The MCP client and CLI each manage their own credentials.
 
 ## Connect the repository
 
