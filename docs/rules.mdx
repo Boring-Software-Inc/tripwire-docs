@@ -3,19 +3,21 @@ title: Rules
 description: Choose checks for your repository, tune their thresholds, or create a rule from a signal.
 ---
 
-A rule checks one condition, such as whether a pull request changes more than 200 files. Use **Rules** to manage checks that apply at the repository level. For a particular trigger, exception, or action, put the check inside a workflow.
+A **rule** evaluates one condition, such as whether a pull request touches at most 200 files. Repository rules apply on their own. Rules inside a **workflow** can run on a particular trigger, use exceptions, or lead to different actions.
 
-## Install and tune a rule
+## Repository rules
 
-Open **Rules**, then **Library**. Install the check and open **Installed** to see its settings. Underlined values are editable. For example, select the file limit on **Max files changed** to set the largest pull request you want to pass.
+The **Library** lists rules available to the repository. The **Installed** tab shows active rules and their settings. Underlined values are editable, such as the file limit for **Max files changed**.
 
 <Frame caption="The installed Account age and Max files changed rules show their current thresholds.">
-  ![Installed rules with Account age set to seven days and Max files changed set to 200 files.](/screenshots/rules.png)
+  <a className="docs-capture docs-capture-rules" href="/screenshots/installed-rules.jpg">
+    <img src="/screenshots/installed-rules.jpg" alt="Installed rules with Account age set to seven days and Max files changed set to 200 files. Open full screenshot." />
+  </a>
 </Frame>
 
-If a rule shows **Used in a workflow**, open that workflow to see where it runs. Edit the step on the canvas to change its settings there. The repository’s install toggle controls standalone use; it does not switch off an explicit workflow step.
+**Used in a workflow** identifies rules included in a workflow. Those steps have their own settings. The repository’s install toggle applies to standalone use.
 
-## Pick a check
+## Built-in rules
 
 | What you want to check | Rule |
 | --- | --- |
@@ -29,16 +31,16 @@ If a rule shows **Used in a workflow**, open that workflow to see where it runs.
 | Whether the author owns public repositories with enough stars | Owned repositories by stars |
 | Prior merges in public repositories with enough stars | Merged pull requests by repository stars |
 
-The two star checks answer different questions. To require five merges in repositories with at least 50,000 stars each, use **Merged pull requests by repository stars**. You can also exclude repositories the author owns. Use **Owned repositories by stars** to check what the author maintains instead. These checks use GitHub data.
+The two star checks answer different questions. **Merged pull requests by repository stars** can require five merges in repositories with at least 50,000 stars each, with an option to exclude repositories the author owns. **Owned repositories by stars** checks the author’s own public repositories. These checks use GitHub data.
 
-For a shared list of accounts reported for spam, see [Pilot](/pilot). Matches go to Human review where the feature is available.
+Where **Pilot** is available, pull requests from accounts on its shared list go to **Human review**. [Pilot](/pilot).
 
-## Create a custom rule
+## Custom rules
 
-Select **Create rule**. Pick the signal to check, choose a comparison, and enter a value. Tripwire offers comparisons based on the signal. A file count takes a number. A username can be compared with a list.
+A custom rule compares a **signal** with a value. Signals are facts Tripwire reads or calculates from forge data, such as a pull request’s file count or the author’s username. The available comparisons depend on the signal. A file count can have a maximum. A username can be compared with a list. [Signals in Concepts](/concepts#signals).
 
-For example, require that the username is outside a list of accounts you want to review. Add the rule to a workflow and route its failure to **Human review**. The rule defines the condition. The [workflow](/workflows) defines the response.
+For example, a rule can require that the author’s username is outside a list of accounts. A workflow can route a failed check to **Human review**.
 
-## Understand the result
+## Rule evidence
 
-Open a pull request’s run in **Activity**. Look at the rule result and its evidence before changing a threshold. A failure means the condition did not pass. A skipped check means Tripwire could not reach a pass or fail result, for example because the forge could not provide the evidence.
+**Activity** records why a rule produced its result. For example, a run that reports 410 changed files against a limit of 200 shows exactly why **Max files changed** failed. A **skipped** result means Tripwire lacked enough evidence to evaluate the condition. Changing the limit won’t supply the missing data.

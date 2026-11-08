@@ -1,31 +1,99 @@
-.quickstart-image {
+.docs-capture {
+  --source-width: 1313;
+  --crop-width: 780;
+  --crop-x: 266;
+
   position: relative;
   display: block;
   width: 100%;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 6px;
+  aspect-ratio: var(--crop-width) / var(--crop-height);
 }
 
-.quickstart-image img {
+.docs-capture img {
   position: absolute;
-  top: var(--crop-top);
-  left: -32.05%;
-  width: 164.1%;
+  top: calc(-100% * var(--crop-y) / var(--crop-height));
+  left: calc(-100% * var(--crop-x) / var(--crop-width));
+  width: calc(100% * var(--source-width) / var(--crop-width));
   max-width: none;
 }
 
-.quickstart-image-repo {
-  --crop-top: -174%;
-  aspect-ratio: 780 / 255;
+.docs-capture-activity {
+  --crop-y: 123;
+  --crop-height: 394;
 }
 
-.quickstart-image-run {
-  --crop-top: -4%;
-  aspect-ratio: 780 / 505;
+.docs-capture-review {
+  --source-width: 1280;
+  --crop-x: 248;
+  --crop-y: 183;
+  --crop-height: 510;
 }
 
-@media (max-width: 640px) {
-  blume-frame figure > div:has(.quickstart-image) {
-    padding: 0.5rem;
-  }
+.docs-capture-rules {
+  --crop-y: 126;
+  --crop-height: 507;
+}
+
+.docs-capture-run {
+  --crop-y: 125;
+  --crop-height: 555;
+}
+
+.docs-capture-workflow {
+  --crop-width: 958;
+  --crop-x: 324;
+  --crop-y: 405;
+  --crop-height: 220;
+}
+
+.docs-capture-pilot {
+  --crop-width: 950;
+  --crop-x: 180;
+  --crop-y: 12;
+  --crop-height: 294;
+}
+
+blume-frame figure > div:has(.docs-capture) {
+  padding: clamp(6px, 1vw, 12px);
+}
+
+.docs-capture:focus-visible {
+  outline: 2px solid var(--blume-accent);
+  outline-offset: 2px;
+}
+
+.pilot-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-block: 1.25rem;
+}
+
+.pilot-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--blume-border);
+  border-radius: 8px;
+  color: var(--blume-foreground);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.pilot-actions a:hover {
+  background: var(--blume-muted);
+}
+
+.pilot-actions .pilot-primary {
+  background: var(--blume-accent);
+  color: var(--blume-accent-foreground);
+}
+
+.pilot-actions .pilot-primary:hover {
+  opacity: 0.88;
+  background: var(--blume-accent);
 }

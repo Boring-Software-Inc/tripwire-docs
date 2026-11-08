@@ -1,0 +1,6 @@
+.git
+.blume
+.blume-verify
+dist
+node_modules
+public/auth.md

@@ -1,0 +1,47 @@
+---
+title: Sign in from an agent
+description: Connect your coding agent to Tripwire and approve access in a browser.
+---
+
+## Approval prompts
+
+Your agent may pause more than once. Each pause gives you a chance to review a different request. The agent explains what it needs, waits for your decision, and continues from that step.
+
+| Prompt | What you approve |
+| --- | --- |
+| Tripwire sign-in | The client, organization, and permissions shown on Tripwire’s consent screen. |
+| GitHub App installation | Which repositories Tripwire can access. This appears when the repository still needs to be connected. |
+| Repository changes | The rules the agent proposes and whether to turn on the repository gate. |
+
+<Callout type="info">
+  Browser approval completes sign-in. Passwords, API keys, and access tokens stay out of the agent conversation.
+</Callout>
+
+## Client sign-in
+
+Run the installer and choose your coding agent. It prints the sign-in instructions for that client.
+
+```sh
+npx @tripwire-sh/cli install
+```
+
+| Client | Sign in |
+| --- | --- |
+| Codex | Run `codex mcp login tripwire`. |
+| Claude Code | Run `claude mcp login tripwire` or use `/mcp` in Claude Code. |
+| Cursor | Connect Tripwire from the editor’s **MCP settings**. |
+
+Open the authorization link in your browser and approve access. Back in your agent, ask which Tripwire account it’s signed into. Tripwire’s `whoami` tool shows the account and available organizations.
+
+<Callout type="info">
+  Use your agent’s **MCP** connection for setup. If you’re setting up entirely from the terminal, sign in with `tripwire login` instead. Each client asks for its own approval when you connect it.
+</Callout>
+
+## Sign-in problems
+
+| If you see | What happens next |
+| --- | --- |
+| The wrong account | **Use another account** on the approval screen switches the account before you approve. |
+| An expired device code | The CLI can start a fresh sign-in and give you a new browser link. |
+| A missing repository | The agent checks the signed-in account and waits for GitHub App installation to finish before it checks again. |
+| A denied request | Setup stops at that step. A new request can start when you’re ready. |
