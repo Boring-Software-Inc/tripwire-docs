@@ -9,7 +9,9 @@ Open your repository in a coding agent and paste this prompt.
 
 Help me set up Tripwire for this repo.
 
-Identify the repository from its Git remote. If the Tripwire MCP server is available, use its setup skill. Otherwise, help me install it with `npx @tripwire-sh/cli install` and sign in from my coding agent. If I need to approve browser sign-in or connect the GitHub App, give me the link and wait.
+Identify the repository from its Git remote. Use Tripwire MCP if it’s available in this session. Otherwise, use the Tripwire CLI. Check the session with `npx @tripwire-sh/cli whoami`. If signed out, start `npx @tripwire-sh/cli login --no-browser`, send me the browser link and code, and keep the command running while I approve. When it finishes, run `whoami` again to verify that the account can access the intended organization.
+
+If the repository needs the GitHub App, send me the installation link and wait for approval. Confirm the repository is connected before continuing.
 
 Check which rules the repository already uses. Suggest a short starting set based on the repo. Ask before saving rules or turning on the gate. After setup, show me where to find the repository’s Activity.
 

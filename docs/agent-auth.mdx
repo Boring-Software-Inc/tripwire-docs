@@ -34,7 +34,7 @@ npx @tripwire-sh/cli install
 Open the authorization link in your browser and approve access. Back in your agent, ask which Tripwire account it’s signed into. Tripwire’s `whoami` tool shows the account and available organizations.
 
 <Callout type="info">
-  Use your agent’s **MCP** connection for setup. If you’re setting up entirely from the terminal, sign in with `tripwire login` instead. Each client asks for its own approval when you connect it.
+  An agent with terminal access can sign in with `npx @tripwire-sh/cli login --no-browser` and share the approval link. The **CLI** and **MCP** clients each ask for approval when you connect them.
 </Callout>
 
 ## Sign-in problems

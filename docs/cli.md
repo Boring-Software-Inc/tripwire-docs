@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-Use Node.js 20.12 or later. Install the CLI, then sign in. Run the SDK install from the project that contains your workflow files. See the [TypeScript SDK guide](/typescript-sdk) for the project setup.
+Use Node.js 20.12 or later to run the CLI. For TypeScript workflows, use Node.js 24 and set `"type": "module"` in the nearest `package.json` above your workflow files. Install the SDK in that project. [TypeScript SDK guide](/typescript-sdk).
 
 ```sh
 npm install -g @tripwire-sh/cli
