@@ -10,7 +10,7 @@ Use the Git remote to identify the GitHub owner and repository. Confirm the inte
 
 Use an existing Tripwire MCP connection if the current agent session can call it. Call `whoami` to check the account and available organizations. If the client can authorize and reconnect within this session, pass its browser link to the developer and wait. Call `whoami` again after approval.
 
-If MCP is unavailable in this session, use the CLI. Run `npx @tripwire-sh/cli login --no-browser` and keep the process running. Give the developer the verification link and code from the output. Wait for the command to finish after browser approval, then run `npx @tripwire-sh/cli whoami` and continue in the same session. If the request expires or the developer denies it, stop and ask whether to try again. Use the account and organization only after `whoami` confirms approved access and agent access for that organization. The MCP client and CLI each manage their own credentials.
+If MCP is unavailable in this session, run `npx @tripwire-sh/cli whoami`. Reuse an approved session with access to the intended organization. If the CLI asks you to sign in, run `npx @tripwire-sh/cli login --no-browser` and keep the process running. Give the developer the verification link and code from the output. Wait for the command to finish after browser approval, then run `npx @tripwire-sh/cli whoami` and continue in the same session. If the request expires or the developer denies it, stop and ask whether to try again. Use the account and organization only after `whoami` confirms approved access and agent access for that organization. The MCP client and CLI each manage their own credentials.
 
 ## Connect the repository
 
