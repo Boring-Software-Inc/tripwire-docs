@@ -1,6 +1,6 @@
 # Tripwire docs
 
-The public guides live in `docs/` within this project. They draw on the [Tripwire repository](https://github.com/Boring-Software-Inc/v2), the [CLI README](https://github.com/Boring-Software-Inc/v2/blob/staging/apps/cli/README.md), and the [workflow authoring notes](https://github.com/Boring-Software-Inc/v2/blob/staging/docs/research/workflow-authoring-sdk-cli.md).
+The public guides live in `docs/`. Their source is the [Tripwire repository](https://github.com/Boring-Software-Inc/v2).
 
 Use Node.js 22.19 or later. Run these commands from the repository root.
 

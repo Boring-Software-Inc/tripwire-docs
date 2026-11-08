@@ -11,22 +11,22 @@ A trigger decides when a workflow runs. A check evaluates one condition. A gate 
 
 ## Read the canvas
 
-Open Workflows and select a workflow. Read the connections from the trigger toward the actions. Select a step to see its settings in Properties.
+Open **Workflows** and select a workflow. Read the connections from the trigger toward the actions. Select a step to see its settings in **Properties**.
 
 <Frame caption="This workflow checks account age on new or updated change requests. The failure connection leads to Block.">
   ![Tripwire workflow editor showing a change request trigger, an Account age rule, and a Block action.](/screenshots/workflow-editor.png)
 </Frame>
 
-Select Save workflow after editing. If the workflow is off, select Turn on workflow when you’re ready for it to act on live events.
+Select **Save workflow** after editing. If the workflow is off, select **Turn on workflow** when you’re ready for it to act on live events.
 
 ## Combine checks with gates
 
-To require an account at least 30 days old and no more than 100 changed files, connect both checks to an All of gate. Connect its failure output to Human review.
+To require an account at least 30 days old and no more than 100 changed files, connect both checks to an **All of** gate. Connect its failure output to **Human review**.
 
 ```mermaid
 flowchart TD
   accTitle: Route a pull request to Human review when either check fails
-  accDescr: When a pull request opens, check account age and file count. Both feed an All of gate. Pass takes no action. Fail sends the pull request to Human review.
+  accDescr: When a pull request opens, check account age and file count. Both feed an **All of** gate. Pass takes no action. Fail sends the pull request to **Human review**.
   opened["Pull request opens"] --> age["Account age"]
   opened --> size["Files changed"]
   age --> gate{"All of"}
@@ -35,7 +35,7 @@ flowchart TD
   gate -->|Fail| review["Human review"]
 ```
 
-If either check fails, a maintainer gets an item in Human review. With Any of, this workflow sends the item only when both checks fail.
+If either check fails, a maintainer gets an item in Human review. With **Any of**, this workflow sends the item only when both checks fail.
 
 | Gate | Passes when |
 | --- | --- |
@@ -47,7 +47,7 @@ A check can be skipped when Tripwire cannot get the evidence it needs. A skipped
 
 ### Add an exception
 
-Use Skip when to add an exception to a group of requirements. For example, require a minimum account age unless the author already has a merged pull request in another person’s repository. A passing exception waives the requirement. If Tripwire cannot verify the exception, the requirement still applies.
+Use **Skip when** to add an exception to a group of requirements. For example, require a minimum account age unless the author already has a merged pull request in another person’s repository. A passing exception waives the requirement. If Tripwire cannot verify the exception, the requirement still applies.
 
 The [TypeScript SDK guide](/typescript-sdk#combine-checks) shows the same workflow in code.
 
@@ -64,11 +64,11 @@ The [TypeScript SDK guide](/typescript-sdk#combine-checks) shows the same workfl
 
 ## Run on a schedule
 
-Use On a schedule for recurring maintenance. For example, run daily and lock closed issues that have been inactive for 30 days. Set the subject to issues, the state to closed, and the inactivity threshold to 30 days. Leave the filter for already locked conversations on. Use excluded labels to leave designated issues alone.
+Use **On a schedule** for recurring maintenance. For example, run daily and lock closed issues that have been inactive for 30 days. Set the subject to issues, the state to closed, and the inactivity threshold to 30 days. Leave the filter for already locked conversations on. Use excluded labels to leave designated issues alone.
 
 ## Inspect a run
 
-Open Activity and select a run to see the check results, the branch Tripwire took, and the recorded actions. If the run is paused, decide it in [Human review](/human-review).
+Open **Activity** and select a run to see the check results, the branch Tripwire took, and the recorded actions. If the run is paused, decide it in [Human review](/human-review).
 
 <Frame caption="The run records the rule that failed, the evidence, and what Tripwire did next.">
   ![A blocked run showing that the pull request touched 201 files and failed Max files changed.](/screenshots/run-result.png)

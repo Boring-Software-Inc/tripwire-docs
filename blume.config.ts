@@ -10,8 +10,9 @@ export default defineConfig({
 	navigation: {
 		sidebar: [
 			{ label: "Get started", items: ["/", "/quickstart"] },
-			{ label: "Use Tripwire", items: ["/workflows", "/rules", "/human-review", "/pilot"] },
+			{ label: "Use Tripwire", items: ["/workflows", "/rules", "/human-review"] },
 			{ label: "Workflows in code", items: ["/cli", "/typescript-sdk"] },
+			{ label: "Open source", items: ["/pilot"] },
 		],
 	},
 	theme: {

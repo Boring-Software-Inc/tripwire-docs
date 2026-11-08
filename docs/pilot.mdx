@@ -1,24 +1,22 @@
 ---
 title: Pilot
-description: Look up accounts on the shared GitHub spam list and send matches for review where Pilot is available.
+description: A public list of GitHub accounts reported for spam and reviewed by maintainers.
 ---
 
-Pilot is a public list of GitHub accounts reported for spam and reviewed by maintainers. The public list is separate from the repository rule that uses it.
+**Pilot** publishes account listings with a reason and an optional expiry. You can read the list or contribute a report through the [Pilot repository](https://github.com/Boring-Software-Inc/Pilot).
 
-## Search, suggest, or appeal
+## Suggest or appeal a listing
 
-The [Pilot preview](https://staging.tripwire.sh/pilot) lets you search by GitHub username and see each listing’s reason and expiry. Use Suggest an account to send a report to the maintainers, or Appeal a block to request a correction.
+Open an issue in the repository. Include the GitHub username or profile URL and explain what you want added, corrected, or removed. Link to public examples when reporting an account.
 
-<Frame caption="The public Pilot page has a username search, a link to the source repository, and an appeal action.">
-  ![Pilot preview showing GitHub username search and the Appeal a block button.](/screenshots/pilot.jpg)
-</Frame>
+<Callout type="info" title="Public reports">
+  Keep private evidence out of GitHub issues.
+</Callout>
 
-## Send matches to Human review
+## Review matches in Tripwire
 
-On an eligible GitHub repository, open Rules, then Library, and install Pilot. Tripwire sends pull requests from listed accounts to the repository’s Human review queue. A maintainer decides whether to approve or block each one.
-
-Pilot is in limited rollout. If it’s absent from Library, the rule is unavailable for that repository. The public list can still be browsed independently.
+On eligible GitHub repositories, open **Rules**, then **Library**, and install **Pilot**. Tripwire sends pull requests from listed accounts to **Human review** for a maintainer to approve or block.
 
 ## Read the list from a tool
 
-The preview page footer links to a paginated JSON API and a plain text list of usernames. Use JSON for listing details such as the reason and expiry. Use the text endpoint when you only need usernames.
+The [published JSON snapshot](https://raw.githubusercontent.com/Boring-Software-Inc/Pilot/published/snapshot.json) includes each listing’s GitHub username, reason, and expiry. An empty expiry means the listing has no scheduled end.
