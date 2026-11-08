@@ -1,0 +1,7 @@
+.blume/
+.astro/
+node_modules/
+dist/
+.env.local
+.blume-verify/
+.blume-verify/

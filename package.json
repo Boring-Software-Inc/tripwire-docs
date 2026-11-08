@@ -1,0 +1,13 @@
+{
+  "name": "tripwire-docs",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.19" },
+  "scripts": {
+    "dev": "blume dev",
+    "build": "blume build",
+    "preview": "blume preview",
+    "validate": "blume validate --strict"
+  },
+  "dependencies": { "blume": "2.2.7" }
+}
