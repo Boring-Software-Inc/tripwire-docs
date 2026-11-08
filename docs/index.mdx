@@ -1,0 +1,28 @@
+---
+title: Tripwire
+description: Check pull requests against your repository’s rules.
+sidebar:
+  label: Overview
+pagination: false
+---
+
+Tripwire checks contributions when events such as opening a pull request trigger a workflow. The workflow can block the contribution or pause for a maintainer. Open **Activity** to see what ran and why.
+
+## Start here
+
+<CardGroup cols={2}>
+  <Card title="Run your first check" href="/quickstart" icon="play" arrow>
+    Connect a GitHub test repository and find the result of a pull request in Activity.
+  </Card>
+  <Card title="Edit a workflow in code" href="/cli" icon="terminal" arrow>
+    Pull a workflow into your checkout and submit an edit for review.
+  </Card>
+</CardGroup>
+
+## How a check works
+
+1. A **trigger** starts a workflow, for example when someone opens a pull request.
+2. A [rule](/rules) checks something about the contribution, such as how many files it changes.
+3. The [workflow](/workflows) uses the result to decide what to do. If it pauses, a maintainer can decide in [Human review](/human-review).
+
+Open the run from **Activity** to see which rules passed, which failed, and what Tripwire did.

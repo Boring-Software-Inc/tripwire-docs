@@ -1,0 +1,61 @@
+---
+title: Quickstart
+description: Connect a GitHub test repository and inspect your first pull request check.
+---
+
+Use a test repository where you can install the Tripwire GitHub App. You’ll also need a contributor outside your org to open a test pull request.
+
+<Steps>
+<Step>
+
+## Connect a repository
+
+Sign in to [Tripwire](https://app.tripwire.sh). From your org home, select **Connect repos**, choose **GitHub**, and follow the prompts to grant the app access to your test repository.
+
+Return to Tripwire and open the repository from **Connected repos**. If it’s missing, check which repositories you selected during installation.
+
+<Frame caption="Connected repos lists the repositories available to this Tripwire org.">
+  <a className="quickstart-image quickstart-image-repo" href="/screenshots/connected-repos.png">
+    <img src="/screenshots/connected-repos.png" alt="Connected repos lists solo-webapp and its shortcuts to Rules, Workflows, and Activity. Open full screenshot." />
+  </a>
+</Frame>
+
+</Step>
+<Step>
+
+## Choose a check
+
+Open **Rules**. If **Max files changed** isn’t installed, add it from **Library**. Under **Installed**, select its file limit and set it to **1** for the test.
+
+Open **Workflows** and confirm the workflow for that rule is on. If you’re using a custom workflow, confirm that it runs when a pull request opens and includes the rule.
+
+</Step>
+<Step>
+
+## Open a pull request and inspect the run
+
+Have the test contributor open a pull request that changes two files. In Tripwire, open **Activity**, find the pull request by number, and open its run.
+
+The run shows the rule’s result and any action Tripwire took. In this example, **Max files changed** failed because the pull request touched 201 files.
+
+<Frame caption="The run records the failed rule, the file count, and the resulting block.">
+  <a className="quickstart-image quickstart-image-run" href="/screenshots/run-result.png">
+    <img src="/screenshots/run-result.png" alt="Run for pull request 2532 showing a failed Max files changed check and a block. Open full screenshot." />
+  </a>
+</Frame>
+
+If no run appears, check that the workflow is on and that its trigger matches the event you tested.
+
+</Step>
+</Steps>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Edit a workflow" href="/workflows" icon="workflow" arrow>
+    Change which checks run and what happens when they fail.
+  </Card>
+  <Card title="Review a held pull request" href="/human-review" icon="list-checks" arrow>
+    Find out why a pull request is waiting and decide what happens next.
+  </Card>
+</CardGroup>

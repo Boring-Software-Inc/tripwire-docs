@@ -1,0 +1,31 @@
+.quickstart-image {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.quickstart-image img {
+  position: absolute;
+  top: var(--crop-top);
+  left: -32.05%;
+  width: 164.1%;
+  max-width: none;
+}
+
+.quickstart-image-repo {
+  --crop-top: -174%;
+  aspect-ratio: 780 / 255;
+}
+
+.quickstart-image-run {
+  --crop-top: -4%;
+  aspect-ratio: 780 / 505;
+}
+
+@media (max-width: 640px) {
+  blume-frame figure > div:has(.quickstart-image) {
+    padding: 0.5rem;
+  }
+}

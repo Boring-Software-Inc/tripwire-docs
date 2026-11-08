@@ -1,0 +1,22 @@
+---
+title: Workflows
+description: Choose what starts a workflow, what it checks, and what happens when a check fails.
+---
+
+## Edit a workflow
+
+Open **Workflows** in your repository and select a workflow. On the **Canvas**, start with the event you want to check, add a rule, and connect the failure output to an action.
+
+<Frame caption="This workflow checks account age when a change request opens or gets new commits. The red connection leads to Block when the check fails.">
+  ![Workflow canvas with a change request trigger, an Account age rule, and a Block action.](/screenshots/workflow-editor.png)
+</Frame>
+
+Select **Save workflow**, then **Turn on workflow** if it’s off. To make the same change from a repository checkout, [pull the workflow with the CLI](/cli).
+
+## Check what ran
+
+Open **Activity** and select the run for the pull request. The run shows which rules passed or failed and what action Tripwire took. If it paused for a maintainer decision, open [Human review](/human-review).
+
+## Change the check
+
+Open the rule on the canvas to edit it. If you need a different check, choose **Add rule**. See [Rules](/rules) for the difference between installing a rule in the repository and adding it to a workflow you manage.

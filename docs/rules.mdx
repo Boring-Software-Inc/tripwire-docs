@@ -1,0 +1,20 @@
+---
+title: Rules
+description: Install a rule or change what it checks.
+---
+
+A rule checks one condition. **Account age** checks how old the contributor’s account is. **Max files changed** counts the files a pull request touches.
+
+## Install a rule
+
+Open **Rules**, select **Library**, and install the rule you want. Open **Installed** to see the rule and its current settings. For checks with editable values, select an underlined value on the card.
+
+<Frame caption="Select the underlined seven-day threshold on the Account age card to change it.">
+  ![Installed rules with an Account age card set to seven days and a Max files changed card set to 200 files.](/screenshots/rules.png)
+</Frame>
+
+## Add a rule to a custom workflow
+
+Open the workflow, select **Add rule** on its rules step, and choose the check. The [workflow](/workflows) determines when the rule runs and what action follows a failure.
+
+To see a rule’s result for a particular pull request, open its run from **Activity**.
