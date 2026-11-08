@@ -1,0 +1,24 @@
+---
+title: Pilot
+description: Look up accounts on the shared GitHub spam list and send matches for review where Pilot is available.
+---
+
+Pilot is a public list of GitHub accounts reported for spam and reviewed by maintainers. The public list is separate from the repository rule that uses it.
+
+## Search, suggest, or appeal
+
+The [Pilot preview](https://staging.tripwire.sh/pilot) lets you search by GitHub username and see each listing’s reason and expiry. Use Suggest an account to send a report to the maintainers, or Appeal a block to request a correction.
+
+<Frame caption="The public Pilot page has a username search, a link to the source repository, and an appeal action.">
+  ![Pilot preview showing GitHub username search and the Appeal a block button.](/screenshots/pilot.jpg)
+</Frame>
+
+## Send matches to Human review
+
+On an eligible GitHub repository, open Rules, then Library, and install Pilot. Tripwire sends pull requests from listed accounts to the repository’s Human review queue. A maintainer decides whether to approve or block each one.
+
+Pilot is in limited rollout. If it’s absent from Library, the rule is unavailable for that repository. The public list can still be browsed independently.
+
+## Read the list from a tool
+
+The preview page footer links to a paginated JSON API and a plain text list of usernames. Use JSON for listing details such as the reason and expiry. Use the text endpoint when you only need usernames.

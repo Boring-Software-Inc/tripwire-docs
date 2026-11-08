@@ -10,14 +10,14 @@ export default defineConfig({
 	navigation: {
 		sidebar: [
 			{ label: "Get started", items: ["/", "/quickstart"] },
-			{ label: "Use Tripwire", items: ["/workflows", "/rules", "/human-review"] },
+			{ label: "Use Tripwire", items: ["/workflows", "/rules", "/human-review", "/pilot"] },
 			{ label: "Workflows in code", items: ["/cli", "/typescript-sdk"] },
 		],
 	},
 	theme: {
 		background: { dark: "#101010" },
 		fonts: { display: "geist", body: "geist" },
-		accent: "orange",
+		accent: { light: "#414141", dark: "#d4d4d4" },
 		mode: "system",
 	},
 });

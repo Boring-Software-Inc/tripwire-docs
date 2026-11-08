@@ -10,9 +10,9 @@ Use a test repository where you can install the Tripwire GitHub App. You’ll al
 
 ## Connect a repository
 
-Sign in to [Tripwire](https://app.tripwire.sh). From your org home, select **Connect repos**, choose **GitHub**, and follow the prompts to grant the app access to your test repository.
+Sign in to [Tripwire](https://app.tripwire.sh). From your org home, select Connect repos, choose GitHub, and follow the prompts to grant the app access to your test repository.
 
-Return to Tripwire and open the repository from **Connected repos**. If it’s missing, check which repositories you selected during installation.
+Return to Tripwire and open the repository from Connected repos. If it’s missing, check which repositories you selected during installation.
 
 <Frame caption="Connected repos lists the repositories available to this Tripwire org.">
   <a className="quickstart-image quickstart-image-repo" href="/screenshots/connected-repos.png">
@@ -25,18 +25,18 @@ Return to Tripwire and open the repository from **Connected repos**. If it’s m
 
 ## Choose a check
 
-Open **Rules**. If **Max files changed** isn’t installed, add it from **Library**. Under **Installed**, select its file limit and set it to **1** for the test.
+Open Rules. If Max files changed isn’t installed, add it from Library. Under Installed, select its file limit and set it to 1 for the test.
 
-Open **Workflows** and confirm the workflow for that rule is on. If you’re using a custom workflow, confirm that it runs when a pull request opens and includes the rule.
+Open Workflows and confirm the workflow for that rule is on. If you’re using a custom workflow, confirm that it runs when a pull request opens and includes the rule.
 
 </Step>
 <Step>
 
 ## Open a pull request and inspect the run
 
-Have the test contributor open a pull request that changes two files. In Tripwire, open **Activity**, find the pull request by number, and open its run.
+Have the test contributor open a pull request that changes two files. In Tripwire, open Activity, find the pull request by number, and open its run.
 
-The run shows the rule’s result and any action Tripwire took. In this example, **Max files changed** failed because the pull request touched 201 files.
+The run shows the rule’s result and any action Tripwire took. In this example, Max files changed failed because the pull request touched 201 files.
 
 <Frame caption="The run records the failed rule, the file count, and the resulting block.">
   <a className="quickstart-image quickstart-image-run" href="/screenshots/run-result.png">

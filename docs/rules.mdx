@@ -1,20 +1,44 @@
 ---
 title: Rules
-description: Install a rule or change what it checks.
+description: Choose checks for your repository, tune their thresholds, or create a rule from a signal.
 ---
 
-A rule checks one condition. **Account age** checks how old the contributor’s account is. **Max files changed** counts the files a pull request touches.
+A rule checks one condition, such as whether a pull request changes more than 200 files. Use Rules to manage checks that apply at the repository level. For a particular trigger, exception, or action, put the check inside a workflow.
 
-## Install a rule
+## Install and tune a rule
 
-Open **Rules**, select **Library**, and install the rule you want. Open **Installed** to see the rule and its current settings. For checks with editable values, select an underlined value on the card.
+Open Rules, then Library. Install the check and open Installed to see its settings. Underlined values are editable. For example, select the file limit on Max files changed to set the largest pull request you want to pass.
 
-<Frame caption="Select the underlined seven-day threshold on the Account age card to change it.">
-  ![Installed rules with an Account age card set to seven days and a Max files changed card set to 200 files.](/screenshots/rules.png)
+<Frame caption="The installed Account age and Max files changed rules show their current thresholds.">
+  ![Installed rules with Account age set to seven days and Max files changed set to 200 files.](/screenshots/rules.png)
 </Frame>
 
-## Add a rule to a custom workflow
+If a rule shows Used in a workflow, open that workflow to see where it runs. Edit the step on the canvas to change its settings there. The repository’s install toggle controls standalone use; it does not switch off an explicit workflow step.
 
-Open the workflow, select **Add rule** on its rules step, and choose the check. The [workflow](/workflows) determines when the rule runs and what action follows a failure.
+## Pick a check
 
-To see a rule’s result for a particular pull request, open its run from **Activity**.
+| What you want to check | Rule |
+| --- | --- |
+| Minimum age of the contributor’s account | Account age |
+| Prior merges in repositories owned by someone else | Merged change requests |
+| Number of recent pull requests from one contributor | Rate limit |
+| Number of files touched by the pull request | Max files changed |
+| Whether a change touches a protected path such as `.github/workflows/**` | Honeypot paths |
+| Cryptocurrency addresses in titles, comments, or patches | Crypto address |
+| Whether the contributor has enough text in their profile | Profile README |
+| Whether the author owns public repositories with enough stars | Owned repositories by stars |
+| Prior merges in public repositories with enough stars | Merged pull requests by repository stars |
+
+The two star checks answer different questions. To require five merges in repositories with at least 50,000 stars each, use Merged pull requests by repository stars. You can also exclude repositories the author owns. Use Owned repositories by stars to check what the author maintains instead. These checks use GitHub data.
+
+For a shared list of accounts reported for spam, see [Pilot](/pilot). Matches go to Human review where the feature is available.
+
+## Create a custom rule
+
+Select Create rule. Pick the signal to check, choose a comparison, and enter a value. Tripwire offers comparisons based on the signal. A file count takes a number. A username can be compared with a list.
+
+For example, require that the username is outside a list of accounts you want to review. Add the rule to a workflow and route its failure to Human review. The rule defines the condition. The [workflow](/workflows) defines the response.
+
+## Understand the result
+
+Open a pull request’s run in Activity. Look at the rule result and its evidence before changing a threshold. A failure means the condition did not pass. A skipped check means Tripwire could not reach a pass or fail result, for example because the forge could not provide the evidence.
