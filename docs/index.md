@@ -1,6 +1,6 @@
 ---
-title: Tripwire documentation
-description: Check contributions before they reach a maintainer.
+title: Overview
+description: How Tripwire evaluates pull requests.
 sidebar:
   label: Overview
   order: 0

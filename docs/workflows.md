@@ -13,6 +13,8 @@ For example, a workflow can check that the contributor's account is at least 30 
 
 Open **Workflows** in your repository and select a workflow to edit its trigger, checks, and actions. Save the workflow before turning it on.
 
+![The workflow canvas connects a change request trigger to an account age check and a Block action on failure.](/screenshots/workflow-editor.png)
+
 To edit the same workflow in a repository checkout, [pull it with the CLI](/cli). A CLI push normally opens a review before Tripwire saves the changes. Newly pushed workflows start disabled.
 
 ## Inspect a run

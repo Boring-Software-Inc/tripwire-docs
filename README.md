@@ -10,3 +10,5 @@ npm run dev
 ```
 
 Open http://localhost:4321. Run `npm run validate` to check the docs. Stop the dev server before running `npm run build` to generate the static site in `dist/`, or run `npm run build -- --isolated` to check the build while the server is running.
+
+Screenshots in `public/screenshots/` come from the Tripwire app with demo data.

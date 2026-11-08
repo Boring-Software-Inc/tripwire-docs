@@ -2,10 +2,10 @@ import { defineConfig } from "blume";
 
 export default defineConfig({
 	title: "Tripwire Docs",
-	description: "Set up Tripwire and manage contribution workflows.",
+	description: "How to configure and use Tripwire.",
 	logo: {
 		image: "/tripwire.svg",
-		text: "Tripwire Docs",
+		text: "/ docs",
 	},
 	theme: {
 		accent: "orange",

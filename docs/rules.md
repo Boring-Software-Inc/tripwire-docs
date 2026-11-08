@@ -9,4 +9,6 @@ A rule checks one requirement. **Account age** checks how old the contributor's 
 
 Open **Rules** for your repository to see installed checks. Open **Library** to find another rule. Set the values for your repository, then check how the rule is used in [Workflows](/workflows).
 
+![The Rules page with the Installed tab selected. The Account age card shows a seven-day threshold.](/screenshots/rules.png)
+
 For a workflow you manage explicitly, add the rule to the workflow where it should run. Inspect a run in **Activity** to see the rule result for an individual contribution.
