@@ -3,15 +3,16 @@ import { defineConfig } from "blume";
 export default defineConfig({
 	title: "Tripwire Docs",
 	description: "How to configure and use Tripwire.",
+	deployment: { site: "https://tripwire-docs-tripwire.unkey.app" },
 	logo: {
 		image: "/tripwire.svg",
 		text: "/ docs",
 	},
 	navigation: {
 		sidebar: [
-			{ label: "Get started", items: ["/", "/quickstart"] },
+			{ label: "Get started", items: ["/", "/quickstart", "/concepts"] },
 			{ label: "Use Tripwire", items: ["/workflows", "/rules", "/human-review"] },
-			{ label: "Workflows in code", items: ["/cli", "/typescript-sdk"] },
+			{ label: "Developer tools", items: ["/ai-tools", "/agent-auth", "/cli", "/typescript-sdk"] },
 			{ label: "Open source", items: ["/pilot"] },
 		],
 	},

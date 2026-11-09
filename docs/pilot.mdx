@@ -3,20 +3,40 @@ title: Pilot
 description: A public list of GitHub accounts reported for spam and reviewed by maintainers.
 ---
 
-**Pilot** publishes account listings with a reason and an optional expiry. You can read the list or contribute a report through the [Pilot repository](https://github.com/Boring-Software-Inc/Pilot).
+**Pilot** publishes account listings with a reason and an optional expiry. Maintainers review reports before adding accounts.
 
-## Suggest or appeal a listing
+<div className="pilot-actions">
+  <a className="pilot-primary" href="https://github.com/Boring-Software-Inc/Pilot">View on GitHub</a>
+  <a href="https://github.com/Boring-Software-Inc/Pilot/issues/new?title=Suggest%20an%20account">Suggest an account</a>
+  <a href="https://github.com/Boring-Software-Inc/Pilot/issues/new?title=Appeal%20a%20block">Appeal a block</a>
+</div>
 
-Open an issue in the repository. Include the GitHub username or profile URL and explain what you want added, corrected, or removed. Link to public examples when reporting an account.
+<Frame>
+  <div className="docs-capture docs-capture-pilot">
+    <img src="/screenshots/pilot-list.jpg" alt="Pilot’s account list interface with username search, reason and expiry columns, and the appeal control." />
+  </div>
+</Frame>
 
-<Callout type="info" title="Public reports">
+## Report or appeal a listing
+
+Include the GitHub username or profile URL and explain what you want added, corrected, or removed. For a report, link to public examples such as pull requests or comments.
+
+<Callout type="info">
   Keep private evidence out of GitHub issues.
 </Callout>
 
 ## Review matches in Tripwire
 
-On eligible GitHub repositories, open **Rules**, then **Library**, and install **Pilot**. Tripwire sends pull requests from listed accounts to **Human review** for a maintainer to approve or block.
+**Pilot** is available in the **Rules Library** on eligible GitHub repositories. When a listed account opens a pull request, Tripwire matches the author’s GitHub account ID against the active list.
 
-## Read the list from a tool
+<Callout type="info" title="Example">
+  A listed account opens pull request #42. The pull request stays open and appears in **Human review**. A maintainer can inspect the run for the match and choose **Approve** or **Block**.
+</Callout>
 
-The [published JSON snapshot](https://raw.githubusercontent.com/Boring-Software-Inc/Pilot/published/snapshot.json) includes each listing’s GitHub username, reason, and expiry. An empty expiry means the listing has no scheduled end.
+[Human review guide](/human-review).
+
+## Use the data in your own project
+
+Pilot’s published data is available under the **MIT License**. You can use, modify, and redistribute it in a GitHub App, moderation tool, or other project, including commercial projects. Keep the copyright and permission notices with redistributed copies or substantial portions. [MIT License terms](https://opensource.org/license/mit).
+
+The snapshot includes a GitHub account ID, username, reason, and expiry for each listing. An expiry of `null` means the listing has no scheduled end. [Published JSON snapshot](https://raw.githubusercontent.com/Boring-Software-Inc/Pilot/published/snapshot.json).

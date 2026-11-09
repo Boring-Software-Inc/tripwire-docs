@@ -6,29 +6,13 @@ sidebar:
 pagination: false
 ---
 
-Tripwire checks contributions when events such as opening a pull request trigger a workflow. The workflow can block the contribution or pause for a maintainer. Open **Activity** to see what ran and why.
-
-## Start here
+Tripwire can block a pull request, label it, or send it to a maintainer for review. Open **Activity** to see which checks ran and what happened.
 
 <CardGroup cols={2}>
-  <Card title="Run your first check" href="/quickstart" icon="play" arrow>
-    Connect a GitHub test repository and find the result of a pull request in Activity.
+  <Card title="Set up Tripwire" href="/quickstart" icon="play" arrow>
+    Connect a repository and verify your first check.
   </Card>
-  <Card title="Edit a workflow in code" href="/cli" icon="terminal" arrow>
-    Pull a workflow into your checkout and submit an edit for review.
+  <Card title="Developer tools" href="/ai-tools" icon="terminal" arrow>
+    Use Tripwire from your terminal, code, or coding agent.
   </Card>
 </CardGroup>
-
-## How a check works
-
-1. A trigger starts a workflow, for example when someone opens a pull request.
-2. A [rule](/rules) checks something about the contribution, such as how many files it changes.
-3. The [workflow](/workflows) uses the result to decide what to do. If it pauses, a maintainer can decide in [Human review](/human-review).
-
-Open the run from **Activity** to see which rules passed, which failed, and what Tripwire did.
-
-## Explore by task
-
-Use [Pilot](/pilot) to look up reported GitHub accounts. The workflow guide covers exceptions, scheduled cleanup, and sending a pull request for review.
-
-Coding agents can start with the [docs index](/api/docs/pages.json) and follow each page’s `markdownUrl`.

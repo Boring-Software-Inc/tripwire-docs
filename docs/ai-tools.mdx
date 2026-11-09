@@ -1,0 +1,37 @@
+---
+title: Use from your coding agent
+description: Connect a coding agent to Tripwire, give it the docs, and choose how it should work in your repo.
+---
+
+Use **MCP** to work with connected repositories, **CLI** to run commands from a checkout, and the **TypeScript SDK** to define workflows in code.
+
+## Install and connect
+
+Run the installer to add the **Tripwire MCP server** and setup skills to your agent. Pick your client when prompted.
+
+```sh
+npx @tripwire-sh/cli install
+```
+
+After signing in, ask the agent to list your connected repositories or inspect the latest run for a pull request. [Sign-in instructions](/agent-auth).
+
+## Give your agent the docs
+
+| When the agent needs | Where to start |
+| --- | --- |
+| A list of guides | [Docs index](/api/docs/pages.json). Follow a page’s `markdownUrl`. |
+| Setup instructions | The installed `tripwire-get-started` skill. |
+| Terminal commands | [CLI](/cli). |
+| TypeScript workflow examples | [TypeScript SDK](/typescript-sdk) or the installed `tripwire-workflows` skill. |
+
+## Set repository instructions
+
+Add a short note to `AGENTS.md` or your client’s project instructions if you want the same behavior in every session.
+
+```md
+## Tripwire
+
+Use Tripwire to inspect the rules and runs for this repository. Confirm
+the repository from the Git remote. Show the proposed change and ask
+before saving rules, pushing workflows, or turning on the gate.
+```

@@ -1,86 +1,36 @@
 ---
 title: Quickstart
-description: Prepare a workflow with your coding agent, then check a test pull request.
+description: Connect a GitHub repository and choose what Tripwire checks.
 ---
 
-## Start with your agent
+Open your repository in a coding agent and paste this prompt.
 
-Open a checkout of a GitHub test repository and paste this prompt into your coding agent.
+<Prompt description="Help me set up Tripwire for this repo" actions={["copy"]}>
 
-<Prompt description="Prepare a Tripwire workflow for this repository" actions={["copy"]}>
+Help me set up Tripwire for this repo.
 
-Help me prepare my first Tripwire workflow in this GitHub test repository.
+Identify the repository from its Git remote. Use Tripwire MCP if it’s available in this session. Otherwise, use the Tripwire CLI. Check the session with `npx @tripwire-sh/cli whoami`. If signed out, start `npx @tripwire-sh/cli login --no-browser`, send me the browser link and code, and keep the command running while I approve. When it finishes, run `whoami` again to verify that the account can access the intended organization.
 
-1. Confirm the GitHub repository from the local Git remote. Use the stable Tripwire CLI. If it is missing, ask before installing it with `npm install -g @tripwire-sh/cli`.
-2. Check the session with `tripwire status`. If sign-in is needed, run `tripwire login`, show me the browser link, and wait for me to sign in. If the repository is not connected, ask me to connect it in Tripwire.
-3. Use the TypeScript SDK (`@tripwire-sh/sdk/workflows`). If `@tripwire-sh/sdk` is missing, ask before adding it to the project. Draft a workflow in `.tripwire/workflows/` that checks newly opened pull requests and sends them to Human review if they change more than one file. Preserve existing workflow files.
-4. Validate the workflow locally with `tripwire workflows validate <slug>` and show me the result and proposed file. Ask before pushing, enabling a workflow, or opening a pull request.
+If the repository needs the GitHub App, send me the installation link and wait for approval. Confirm the repository is connected before continuing.
+
+Check which rules the repository already uses. Suggest a short starting set based on the repo. Ask before saving rules or turning on the gate. After setup, show me where to find the repository’s Activity.
 
 </Prompt>
 
-<Callout type="info" title="Browser sign-in">
-  Complete sign-in in your browser when the **CLI** prints the link.
+<Callout type="info">
+  You’ll finish sign-in and approve the **GitHub App** in your browser when prompted. [Agent sign-in guide](/agent-auth).
 </Callout>
-
-Review the proposed file and validation result. When you’re ready, ask the agent to push it for review. Approve the push, open **Workflows**, and select **Turn on workflow** before testing it. For the test, skip to [Inspect the first run](#inspect-the-first-run).
 
 ## Set up in the dashboard
 
-Use a GitHub test repository where you can install the **Tripwire GitHub App**. Ask a contributor outside your organization to open the test pull request.
+Connect your GitHub repository in [Tripwire](https://app.tripwire.sh). In **Rules**, install the checks you want and set their thresholds. Turn on the **gate** to apply them.
 
-<Steps>
-<Step>
+## View activity
 
-## Connect a repository
+As contributions come in, open **Activity** for your repository. Select a run to see the checks Tripwire evaluated and the actions it took.
 
-Sign in to [Tripwire](https://app.tripwire.sh). From your org home, select **Connect repos**, choose GitHub, and follow the prompts to grant the app access to your test repository.
-
-Return to Tripwire and open the repository from **Connected repos**. If it’s missing, check which repositories you selected during installation.
-
-<Frame caption="Connected repos lists the repositories available to this Tripwire org.">
-  <a className="quickstart-image quickstart-image-repo" href="/screenshots/connected-repos.png">
-    <img src="/screenshots/connected-repos.png" alt="Connected repos lists solo-webapp and its shortcuts to Rules, Workflows, and Activity. Open full screenshot." />
+<Frame caption="Activity groups runs by contribution and shows the latest outcome.">
+  <a className="docs-capture docs-capture-activity" href="/screenshots/activity.jpg">
+    <img src="/screenshots/activity.jpg" alt="Repository Activity showing passed and blocked pull requests. Open full screenshot." />
   </a>
 </Frame>
-
-</Step>
-<Step>
-
-## Choose a check
-
-Open **Rules**. If **Max files changed** isn’t installed, add it from **Library**. Under **Installed**, set its file limit to 1.
-
-Open **Workflows** and confirm the workflow for that rule is on. If you’re using a custom workflow, confirm that it runs when a pull request opens and includes the rule.
-
-</Step>
-<Step>
-
-## Inspect the first run
-
-Have the test contributor open a pull request that changes two files. In Tripwire, open **Activity**, find the pull request by number, and open its run.
-
-<Callout type="info" title="What you should see">
-  The run shows the result of **Max files changed** and the action it triggered. If you used the agent prompt, the pull request goes to **Human review**.
-</Callout>
-
-<Frame caption="This example run blocked a pull request that touched 201 files.">
-  <a className="quickstart-image quickstart-image-run" href="/screenshots/run-result.png">
-    <img src="/screenshots/run-result.png" alt="Run for pull request 2532 showing a failed Max files changed check and a block. Open full screenshot." />
-  </a>
-</Frame>
-
-If no run appears, check that the workflow is on and that its trigger matches the event you tested.
-
-</Step>
-</Steps>
-
-## Next steps
-
-<CardGroup cols={2}>
-  <Card title="Edit a workflow" href="/workflows" icon="workflow" arrow>
-    Change which checks run and what happens when they fail.
-  </Card>
-  <Card title="Review a held pull request" href="/human-review" icon="list-checks" arrow>
-    Find out why a pull request is waiting and decide what happens next.
-  </Card>
-</CardGroup>

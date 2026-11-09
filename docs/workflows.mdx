@@ -1,32 +1,32 @@
 ---
 title: Workflows
-description: Connect triggers, checks, gates, and actions in the editor.
+description: Combine rules to decide how Tripwire responds to a repository event.
 ---
 
-A trigger decides when a workflow runs. A check evaluates one condition. A gate combines results. An action runs when an incoming connection matches the outcome.
+A **workflow** combines rules into a response to a repository event or schedule. Its **trigger** determines when it runs. Rules evaluate conditions, gates combine their results, and actions respond to those results. [Workflow terms](/concepts).
 
-<Card title="Edit workflows with the CLI" href="/cli" icon="terminal" arrow>
-  Pull a workflow into your checkout, validate your changes, and submit them for review.
-</Card>
+## Workflow canvas
 
-## Read the canvas
-
-Open **Workflows** and select a workflow. Read the connections from the trigger toward the actions. Select a step to see its settings in **Properties**.
+The **canvas** shows how steps connect, from the trigger to the actions. **Properties** contains the settings for each step.
 
 <Frame caption="This workflow checks account age on new or updated change requests. The failure connection leads to Block.">
-  ![Tripwire workflow editor showing a change request trigger, an Account age rule, and a Block action.](/screenshots/workflow-editor.png)
+  <a className="docs-capture docs-capture-workflow" href="/screenshots/workflow-canvas.jpg">
+    <img src="/screenshots/workflow-canvas.jpg" alt="Workflow canvas showing a change request trigger, an Account age rule, and a Block action. Open full screenshot." />
+  </a>
 </Frame>
 
-Select **Save workflow** after editing. If the workflow is off, select **Turn on workflow** when you’re ready for it to act on live events.
+<Callout type="tip">
+  **Save workflow** keeps changes made on the canvas.
+</Callout>
 
-## Combine checks with gates
+## Gate logic
 
-To require an account at least 30 days old and no more than 100 changed files, connect both checks to an **All of** gate. Connect its failure output to **Human review**.
+This workflow requires an account at least 30 days old and no more than 100 changed files. An **All of** gate combines the two checks. Its failure branch leads to **Human review**.
 
 ```mermaid
 flowchart TD
   accTitle: Route a pull request to Human review when either check fails
-  accDescr: When a pull request opens, check account age and file count. Both feed an **All of** gate. Pass takes no action. Fail sends the pull request to **Human review**.
+  accDescr: When a pull request opens, check account age and file count. Both feed an All of gate. Pass takes no action. Fail sends the pull request to Human review.
   opened["Pull request opens"] --> age["Account age"]
   opened --> size["Files changed"]
   age --> gate{"All of"}
@@ -43,15 +43,15 @@ If either check fails, a maintainer gets an item in Human review. With **Any of*
 | Any of | At least one connected check passes. |
 | Not | Its single input fails. |
 
-A check can be skipped when Tripwire cannot get the evidence it needs. A skipped result carries no pass or fail signal. All of can still fail on a known failure, and Any of can still pass on a known success. If the remaining evidence cannot decide the gate, the gate is skipped and neither branch runs from it.
+A check can be skipped when Tripwire cannot get the evidence it needs. A skipped check supplies neither a pass nor a fail to the gate. All of can still fail on a known failure, and Any of can still pass on a known success. If the remaining evidence cannot decide the gate, the gate is skipped and neither branch runs from it.
 
-### Add an exception
+### Exceptions
 
-Use **Skip when** to add an exception to a group of requirements. For example, require a minimum account age unless the author already has a merged pull request in another person’s repository. A passing exception waives the requirement. If Tripwire cannot verify the exception, the requirement still applies.
+**Skip when** adds an exception to a group of requirements. For example, a minimum account age can apply unless the author already has a merged pull request in another person’s repository. A passing exception waives the requirement. If Tripwire cannot verify the exception, the requirement still applies.
 
 The [TypeScript SDK guide](/typescript-sdk#combine-checks) shows the same workflow in code.
 
-## Choose the action
+## Actions
 
 | Action | Result |
 | --- | --- |
@@ -62,14 +62,29 @@ The [TypeScript SDK guide](/typescript-sdk#combine-checks) shows the same workfl
 | Note only | Leaves the check green and adds a note to the verdict comment. |
 | Webhook or Discord | Sends the verdict to a destination you configure. |
 
-## Run on a schedule
+## Scheduled workflows
 
-Use **On a schedule** for recurring maintenance. For example, run daily and lock closed issues that have been inactive for 30 days. Set the subject to issues, the state to closed, and the inactivity threshold to 30 days. Leave the filter for already locked conversations on. Use excluded labels to leave designated issues alone.
+**On a schedule** runs a workflow at regular intervals. A daily workflow could lock closed issues after 30 days of inactivity, excluding issues with a specified label and conversations that are already locked.
 
-## Inspect a run
+## Run history
 
-Open **Activity** and select a run to see the check results, the branch Tripwire took, and the recorded actions. If the run is paused, decide it in [Human review](/human-review).
+Each run in **Activity** shows the check results, the branch Tripwire followed, and the actions it took. Paused runs wait in **Human review**.
 
 <Frame caption="The run records the rule that failed, the evidence, and what Tripwire did next.">
-  ![A blocked run showing that the pull request touched 201 files and failed Max files changed.](/screenshots/run-result.png)
+  <a className="docs-capture docs-capture-run" href="/screenshots/run-detail.jpg">
+    <img src="/screenshots/run-detail.jpg" alt="A blocked run showing that the pull request touched 410 files and failed Max files changed. Open full screenshot." />
+  </a>
 </Frame>
+
+## Editing with an agent
+
+A coding agent can fetch, validate, and propose a workflow change through **MCP**. When working in a checkout, the **CLI** can pull workflows as TypeScript, compare local edits with the saved workflow, and submit them for review.
+
+<CardGroup cols={2}>
+  <Card title="MCP setup" href="/ai-tools" icon="bot" arrow>
+    Connect a coding agent to Tripwire.
+  </Card>
+  <Card title="Workflow commands" href="/cli#edit-a-workflow" icon="terminal" arrow>
+    Pull, validate, compare, and push workflow files.
+  </Card>
+</CardGroup>

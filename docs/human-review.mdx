@@ -1,16 +1,23 @@
 ---
 title: Human review
-description: Decide what happens to a pull request that a workflow paused.
+description: Hold a pull request for a maintainer decision before the workflow continues.
 ---
 
-## Find out why a pull request is waiting
+Add **Human review** to a workflow when a check should inform a decision that a maintainer makes. For example, send changes to a sensitive path for review while letting other pull requests follow the usual workflow. Tripwire pauses the run when it reaches this action and adds the pull request to the repository’s review queue.
 
-Open **Human review** for your repository. Each waiting item shows the pull request, its author, and the reason it was held. Select the item to inspect the run before deciding.
-
-<Frame caption="Each item shows its reason for waiting next to the author and time.">
-  ![Human review queue with waiting pull requests and Block and Approve buttons on each item.](/screenshots/human-review.png)
+<Frame caption="The queue shows why each pull request is waiting and the decisions available to the maintainer.">
+  <a className="docs-capture docs-capture-review" href="/screenshots/review-queue.jpg">
+    <img src="/screenshots/review-queue.jpg" alt="Human review queue with reasons for waiting and Approve and Block controls. Open full screenshot." />
+  </a>
 </Frame>
 
-## Approve or block
+## Decide a waiting item
 
-Choose **Approve** to continue the workflow, or **Block** to block the contribution. After deciding, open the run from **Activity** to see the recorded outcome.
+Open **Human review** for the repository. Select a pull request to inspect the run and see what triggered the pause.
+
+| Decision | What happens |
+| --- | --- |
+| **Approve** | Resumes the run on the approval branch. |
+| **Block** | Blocks the pull request and follows the denial branch if the workflow defines one. |
+
+Open the run in **Activity** to see the recorded decision and subsequent actions. [Configure workflow branches](/workflows).
